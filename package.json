@@ -1,0 +1,21 @@
+{
+  "name": "logogenerator",
+  "version": "1.0.0",
+  "description": "A script using node.js that takes user input and generates a logo according to those inputs",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^9.1.4"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
