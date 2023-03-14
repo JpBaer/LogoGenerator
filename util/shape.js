@@ -1,3 +1,5 @@
+//Defines the shape classes and provides a render() function to generate unique html
+
 class Shape{
     constructor(color){
         this.color = color; 
@@ -5,6 +7,7 @@ class Shape{
        
 }
 
+//define triangle class
 class Triangle extends Shape {
     constructor(color){
     super(color)
@@ -14,6 +17,7 @@ render(){
     return `<polygon points="150, 18 244, 182 56, 182" fill="${this.color}" />`
 }}
 
+//define square class
 class Square extends Shape {
     constructor(color){
         super(color)
@@ -24,6 +28,7 @@ class Square extends Shape {
     }
 }
 
+//define circle class
 class Circle extends Shape {
     constructor(color){
         super(color)
@@ -38,7 +43,7 @@ class Circle extends Shape {
 
 
 
-
+//exporting classes
 module.exports=  {
     Triangle: Triangle,
     Circle: Circle,
