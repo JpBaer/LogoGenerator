@@ -6,27 +6,26 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateSVG = require('./util/generateSVG');
+
 
 //Write file function
 
 const writeToFile = (fileName, data) => {
     console.log(data)
-    let svg = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-
-    <${data.shape} cx="150" cy="100" r="80" fill="${data.shapeColor}" />
-  
-    <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
-  
-  </svg>`
-
-    fs.writeFile(fileName,svg,(err)=>{
+    if(data.text.length > 3){
+        console.log('Please only included 3 characters in your text');
+        return
+    }
+    else{
+    fs.writeFile(fileName,generateSVG(data),(err)=>{
         if(err){
-            console.log(err)
+            console.log(err);
         }
         else{
-            console.log('Your logo is being created')
+            console.log('Your logo is being created');
         }
-    })
+    })}
 }
 
 
@@ -35,7 +34,7 @@ const init = () => {
 //Inquirer asks user for the logo criteria and saves the data as an object
 inquirer.prompt([{
     type: 'input',
-    message: 'What text do you want in your logo?',
+    message: 'What text do you want in your logo? (3 characters max)',
     name: 'text'
 },
 {

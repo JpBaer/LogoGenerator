@@ -1,24 +1,38 @@
+//This function parses the data object and creates html specific to each shape provided
+//returns html to be input into the write file function
+// const Circle = require('./shape');
+// const Square = require('./shape');
+// const Triangle = require('./shape')
+const shape = require('./shape')
+
 function generateSVG(data){
     if(data.shape == 'circle'){
+        const newShape = new shape.Circle(data.shapeColor);
+        console.log(newShape)
+        console.log('in the circle loop')
+
         return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
-        <${data.shape} cx="150" cy="100" r="80" fill="${data.shapeColor}" />
+        ${newShape.render()}
       
         <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
       
       </svg>`
     }
     else if(data.shape == 'square'){
-        return `<svg version="1.1" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-        <${data.shape} width="300" height="300" fill="${data.shapeColor}" />
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
+        const newShape = new shape.Square(data.shapeColor);
+        return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        ${newShape.render()}
+        <text x="125" y="118" font-size="60" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
       
         </svg>`
     }
     else if(data.shape == 'triangle'){
-        return `<svg version="1.1" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="0,0 300,0 150,150" fill="${data.shapeColor}" />
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
+        const newShape = new shape.Triangle(data.shapeColor);
+
+        return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        ${newShape.render()}
+        <text x="150" y="130" font-size="40" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
       
         </svg>`
     }
@@ -28,4 +42,5 @@ function generateSVG(data){
     }
 }
 
+//allows function to be called in main js file
 module.exports = generateSVG
